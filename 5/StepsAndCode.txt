@@ -1,0 +1,67 @@
+Arduino Uno
+LED
+LDR (photoresistor)
+220 and 10k ohm resistors
+Wires
+Breadboard
+
+
+
+LED attach to board
+Resistor (220 ohm) one leg attach to LED long leg
+The green wire attach to resistor's empty leg
+The brown wire attach o LED short leg
+
+
+LDR attach to board
+Resistor (10k ohm) attach to LDR one leg
+The purple wire attach to LDR other (empty) leg
+The yellow wire attach to LDR and resistor same column
+The white wire attach to resistor empty leg
+
+The green wire connect to digital 13 from resistor leg
+The brown wire connect to GND from LED short leg
+The purple wire connect to +5V from LDR
+The yellow wire connect to A0
+The white wire connect to GND
+
+//////Code Start
+const int ledPin = 13;
+
+const int ldrPin = A0;
+
+void setup() {
+
+Serial.begin(9600);
+
+pinMode(ledPin, OUTPUT);
+
+pinMode(ldrPin, INPUT);
+
+}
+
+void loop() {
+
+int ldrStatus = analogRead(ldrPin);
+
+if (ldrStatus <=300) {
+
+digitalWrite(ledPin, HIGH);
+
+Serial.println("LDR is DARK, LED is ON");
+
+}
+
+else {
+
+digitalWrite(ledPin, LOW);
+
+Serial.println("---------------");
+
+}
+
+}
+//codeend
+
+
+
